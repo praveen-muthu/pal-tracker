@@ -5,4 +5,4 @@ applications:
     routes:
       - route: pal-tracker-kicking-monkey.apps.pcf.paltraining.perficient.com
     env:
-      WELCOME_MESSAGE: Travis CI test review environment
+      WELCOME_MESSAGE: Hello from the review environment
