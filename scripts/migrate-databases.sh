@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-
+ 
 
 app_guid=`cf app $1 --guid`
 credentials=`cf curl /v2/apps/$app_guid/env | jq '.system_env_json.VCAP_SERVICES | .[] | .[] | select(.instance_name=="tracker-database") | .credentials'`
