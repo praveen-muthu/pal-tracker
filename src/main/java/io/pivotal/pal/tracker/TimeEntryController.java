@@ -28,8 +28,6 @@ public class TimeEntryController {
         } else {
             return new ResponseEntity<>(timeEntry, HttpStatus.OK);
         }
-
-
     }
 
     @RequestMapping(value = "/time-entries", method = RequestMethod.GET)
