@@ -46,7 +46,7 @@ public class TimeEntryApiTest {
 
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
-    
+
     @Test
     public void testCreate() throws Exception {
         ResponseEntity<String> createResponse = restTemplate.postForEntity("/time-entries", timeEntry, String.class);

@@ -1,15 +1,21 @@
 package io.pivotal.pal.tracker;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TimeEntryController {
 
     private TimeEntryRepository timeEntryRepository;
+
+    @Autowired
+    private TimeEntryJPARepository timeEntryJPARepository;
 
     public TimeEntryController(TimeEntryRepository timeEntryRepository) {
         this.timeEntryRepository = timeEntryRepository;
@@ -49,5 +55,15 @@ public class TimeEntryController {
     public ResponseEntity<TimeEntry> delete(@PathVariable long timeEntryId) {
         timeEntryRepository.delete(timeEntryId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @RequestMapping(value = "/time-entries-jpa", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void save(@RequestBody TimeEntryEntity timeEntryEntity) {
+        timeEntryJPARepository.save(timeEntryEntity);
+    }
+
+    @RequestMapping(value = "/time-entries-jpa/{id}", method = RequestMethod.GET)
+    public TimeEntryEntity findById(@PathVariable long id) {
+        return timeEntryJPARepository.findById(id).get();
     }
 }
