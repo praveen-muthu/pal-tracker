@@ -30,7 +30,6 @@ public class PalTrackerApplication {
     public ObjectMapper jsonObjectMapper() {
         return Jackson2ObjectMapperBuilder.json()
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .featuresToEnable(SerializationFeature.INDENT_OUTPUT)
                 .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
                 .modules(new JavaTimeModule())
                 .build();
