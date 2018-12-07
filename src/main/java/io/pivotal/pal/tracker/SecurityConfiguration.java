@@ -14,7 +14,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private boolean isHttpsDisabled;
 
-    public SecurityConfiguration(@Value("${https.disabled}") boolean isHttpsDisabled) {
+    public SecurityConfiguration(@Value("${https.disabled}") Boolean isHttpsDisabled) {
         this.isHttpsDisabled = isHttpsDisabled;
     }
 
